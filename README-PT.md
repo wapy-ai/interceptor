@@ -15,16 +15,16 @@
 
 ```mermaid
 graph TD
-  subgraph Client Side
-    FE[User Request] --> INT[ai‑interceptor SDK]
+  subgraph Client
+    FE["User Request"] --> INT["ai‑interceptor SDK"]
   end
 
-  INT -- "SHA‑256 + sealed‑box" --> TR[/POST /traces/]
-  TR --> LOG[Transparency Log (Merkle)]
-  TR --> WRK[Secure Worker (Nitro Enclave)]
-  WRK --> CAT[Endpoint Catalog & Vector Store]
-  CAT --> LLM[LLM Agent]
-  LLM --> ACT[Calls backend action]
+  INT -- "SHA‑256 + sealed‑box" --> TR["POST /traces"]
+  TR --> LOG["Transparency Log (Merkle)"]
+  TR --> WRK["Secure Worker (Nitro Enclave)"]
+  WRK --> CAT["Endpoint Catalog & Vector Store"]
+  CAT --> LLM["LLM Agent"]
+  LLM --> ACT["Backend Action"]
   ACT --> FE
 ```
 1. **Intercepta** a request/resposta.
