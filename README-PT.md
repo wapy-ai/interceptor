@@ -14,13 +14,18 @@
 ## ⚙️ Como funciona
 
 ```mermaid
-graph LR
-  A[Frontend] --> B((HTTP))
-  B --> C[Backend]
-  C --> D((RabbitMQ))
-  D --> E[Runtime]
-  E -- Socket.io --> A
-  E --> F{Channels}
+graph TD
+  subgraph Client Side
+    FE[User Request] --> INT[ai‑interceptor SDK]
+  end
+
+  INT -- "SHA‑256 + sealed‑box" --> TR[/POST /traces/]
+  TR --> LOG[Transparency Log (Merkle)]
+  TR --> WRK[Secure Worker (Nitro Enclave)]
+  WRK --> CAT[Endpoint Catalog & Vector Store]
+  CAT --> LLM[LLM Agent]
+  LLM --> ACT[Calls backend action]
+  ACT --> FE
 ```
 1. **Intercepta** a request/resposta.
 2. Gera `sha256(body)` e criptografa com sua _public key_.
