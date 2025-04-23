@@ -1,16 +1,25 @@
 {
-  "name": "ai-sdk",
+  "name": "@wapy-ai/interceptor",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Opt-in encrypted trace interceptor for Node back-ends",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest run",
     "clean": "rm -rf dist",
     "build": "pnpm run clean && tsup src/index.ts --dts --format esm,cjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["sdk", "middleware", "ai", "tracing", "encrypted"],
+  "author": "Wapy AI",
+  "license": "MIT",
   "devDependencies": {
     "@nestjs/common": "^11.0.20",
     "@nestjs/core": "^11.0.20",
