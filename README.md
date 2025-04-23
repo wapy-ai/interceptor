@@ -146,8 +146,8 @@ fastify.post('/tags', {
 ### Exported adapters
 
 ```ts
-a iInterceptor // Express / Koa
-a iFastify     // Fastify hook
+aiInterceptor // Express / Koa
+aiFastify     // Fastify hook
 AiIntercept()  // NestJS decorator
 ```
 
