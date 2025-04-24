@@ -9,9 +9,10 @@ export interface AIOptions {
 }
 
 export interface Trace {
-  tenantKey: string
   name: string
-  body: unknown
-  headers: Record<string, string | string[] | undefined>
   schema?: unknown
+  method: string
+  url: string
+  headers: Record<string, string | string[] | undefined>
+  body: unknown
 }

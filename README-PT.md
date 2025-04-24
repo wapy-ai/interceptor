@@ -78,7 +78,7 @@ npm i @wapy-ai/interceptor         # ou pnpm / yarn
 ```bash
 openssl genpkey -algorithm X25519 -out priv.key
 openssl pkey -in priv.key -pubout -out pub.key
-curl -X POST https://ingest.wapy.ai/tenants/{id}/keys \
+curl -X POST https://ingest.wapy.com.br/tenants/{id}/keys \
      --data-binary @pub.key \
      -H "Authorization: Bearer <token>"
 ```

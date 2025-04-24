@@ -6,7 +6,14 @@ export const aiFastify =
   (opts: AIOptions) =>
   async (req: FastifyRequest, _res: FastifyReply) => {
     await sendTrace(
-      { tenantKey: opts.apiKey, name: opts.name, body: req.body, headers: req.headers, schema: opts.schema },
+      {
+        name: opts.name,
+        schema: opts.schema,
+        method: req.method,
+        url:    req.url,
+        headers: req.headers as Record<string, string | string[] | undefined>,
+        body: req.body
+      },
       opts
     )
   }
